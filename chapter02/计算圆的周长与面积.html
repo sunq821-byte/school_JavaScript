@@ -13,11 +13,13 @@
 // 下面根据公式编写代码实现计算圆的周长和面积。
         var pi = 3.14
         var r = prompt('请输入圆的半径')
+        r = parseFloat(r,10)
 
         var l = 2*pi*r
         var s = pi*r*r
 
-        console.log(l,s)
+        document.write("周长 = " + l.toFixed(2) + "<br>")
+        document.write("面积 = " + s.toFixed(2))
     </script>
 </body>
 </html>
