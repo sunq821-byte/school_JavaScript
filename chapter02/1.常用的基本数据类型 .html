@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.boolean
+        var result_01 = true
+        var result_02 = false
+
+        // 2. 数字型
+        
+        // 整型
+        var bin = 0b11010   // 二进制
+        var oct = 0o32      // 八进制
+        var dec = 26        // 十进制
+        var hex = 0x1a      // 十六进制
+
+        //  浮点数
+        // 标准格式
+        var fNum01 = -3.12
+        var fNum02 = 3.12
+        // 科学计数法
+        var fNum03 = 3.12e5
+        var fNum04 = 7.35e-5
+
+        // 数字类型中的特殊值
+        console.log(Number.MAX_VALUE)
+        console.log(Number.MIN_VALUE)
+        console.log('--------------')
+
+        console.log(Number.MAX_VALUE * 2)   // Infinity
+        console.log(Number.MAX_VALUE * -2)   // -Infinity
+        console.log('abc'-2)    // NaN：非法操作
+
+        // 3.字符串
+
+        // 单引号
+        var a = ''
+        var str1 = '书籍'
+
+        // 双引号
+        var b = ""
+        var str2 = "书籍是人类进步的阶梯"
+
+        // 反引号
+        var c = ``
+        var str3 = `读万卷书，行万里路`
+        console.log(a,'\n',b,'\n',c,'\n')
+        console.log(str1,'\n',str2,'\n',str3)
+
+        // 单引号嵌套双引号
+        var fruit01 = '"apple"banana'
+
+        // 双引号嵌套单引号
+        var fruit02 = "'pear'blueberry"
+
+        // 单引号嵌套反引号
+        var fruit03 = '``'
+
+
+    </script>
+
+</body>
+</html>

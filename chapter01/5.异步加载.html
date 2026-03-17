@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    async属性指示浏览器在下载file.js文件时不应该阻塞HTML文档的解析。
+    一旦下载完成，脚本会立即执行，不等待HTML文档解析完成，也不等待其他脚本加载完成。
+    这使得file.js可以在不影响页面加载速度的情况下快速执行，但它可能会影响页面上的其他JavaScript代码执行顺序，因为异步脚本可能在HTML文档解析完成之前执行。
+     -->
+    <script src="file.js" async></script>
+    <!-- 
+    defer属性也指示浏览器不应该阻塞HTML文档的解析，但它会延迟脚本的执行，直到HTML文档被完全解析。
+    这意味着file.js会在HTML文档解析完成后按其在文档中出现的顺序执行。
+    使用defer可以确保脚本在文档完全加载后执行，同时保持脚本按顺序执行，这对于依赖DOM结构的脚本特别有用。 
+    -->
+    <script src="file.js" defer></script>
+</body>
+</html>
