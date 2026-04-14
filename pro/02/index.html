@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>递归与闭包任务计时器</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-stopwatch"></i> 递归与闭包任务计时器</h1>
+      <p class="subtitle">使用递归函数实现倒计时，闭包保护计时状态，统计启动次数</p>
+    </header>
+
+    <main>
+      <div class="row">
+        <div class="control-section">
+          <h2><i class="fas fa-cogs"></i> 计时器控制</h2>
+
+          <div class="input-area">
+            <div class="input-group">
+              <label for="seconds-input">设置倒计时（秒）：</label>
+              <input type="number" id="seconds-input" min="1" max="3600" value="10">
+              <div class="input-hint">输入1-3600秒的倒计时时长</div>
+            </div>
+
+            <div class="input-group">
+              <label for="callback-input">结束回调消息：</label>
+              <input type="text" id="callback-input" placeholder="时间到！倒计时结束">
+              <div class="input-hint">倒计时结束时显示的消息</div>
+            </div>
+
+            <div class="stats-group">
+              <div class="stat-item">
+                <span class="stat-label">启动总次数：</span>
+                <span class="stat-value" id="start-count">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">当前状态：</span>
+                <span class="stat-value status" id="timer-status">未启动</span>
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button id="start-btn" class="btn primary">
+                <i class="fas fa-play"></i> 启动计时器
+              </button>
+              <button id="pause-btn" class="btn secondary" disabled>
+                <i class="fas fa-pause"></i> 暂停
+              </button>
+              <button id="reset-btn" class="btn danger">
+                <i class="fas fa-stop"></i> 重置
+              </button>
+            </div>
+
+            <div class="log-section">
+              <h3><i class="fas fa-history"></i> 计时器日志</h3>
+              <div class="log-output" id="log-output">
+                <div class="log-item">计时器就绪，等待启动...</div>
+              </div>
+              <button id="clear-log-btn" class="btn secondary small">
+                <i class="fas fa-trash-alt"></i> 清空日志
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-section">
+          <h2><i class="fas fa-chart-line"></i> 倒计时可视化</h2>
+
+          <div class="timer-display">
+            <div class="timer-circle">
+              <svg width="200" height="200" viewBox="0 0 200 200">
+                <circle class="timer-bg" cx="100" cy="100" r="90" stroke-width="10" stroke="#e6e6e6" fill="none">
+                </circle>
+                <circle class="timer-progress" cx="100" cy="100" r="90" stroke-width="10" stroke="#4b6cb7" fill="none"
+                  stroke-dasharray="565.48" stroke-dashoffset="0"></circle>
+              </svg>
+              <div class="timer-text">
+                <div class="timer-seconds" id="timer-seconds">00</div>
+                <div class="timer-label">剩余秒数</div>
+              </div>
+            </div>
+            <div class="timer-controls">
+              <div class="preset-buttons">
+                <button class="btn preset" data-seconds="5">5秒</button>
+                <button class="btn preset" data-seconds="10">10秒</button>
+                <button class="btn preset" data-seconds="30">30秒</button>
+                <button class="btn preset" data-seconds="60">1分钟</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="explanation-section">
+            <h3><i class="fas fa-code"></i> 功能实现说明</h3>
+
+            <div class="explanation-item">
+              <h4><i class="fas fa-redo"></i> 递归函数 countDown(seconds, callback)</h4>
+              <p>使用递归和setTimeout模拟异步倒计时，每秒打印剩余秒数，当seconds为0时调用回调函数。</p>
+              <div class="code-snippet">
+                <code>function countDown(seconds, callback) {<br>
+                                &nbsp;&nbsp;if (seconds >= 0) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;console.log(`剩余: ${seconds}秒`);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if (seconds > 0) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(() => countDown(seconds-1, callback), 1000);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;callback();<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;}<br>
+                                }</code>
+              </div>
+            </div>
+
+            <div class="explanation-item">
+              <h4><i class="fas fa-lock"></i> 闭包函数 createTimer()</h4>
+              <p>使用闭包创建私有变量startCount，返回包含start和getStartCount方法的对象，保护内部状态不被外部直接修改。</p>
+              <div class="code-snippet">
+                <code>function createTimer() {<br>
+                                &nbsp;&nbsp;let startCount = 0; // 私有变量<br>
+                                &nbsp;&nbsp;return {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;start(seconds, callback) {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;startCount++;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;countDown(seconds, callback);<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;getStartCount() {<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return startCount;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                                &nbsp;&nbsp;};<br>
+                                }</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="test-section">
+        <h2><i class="fas fa-vial"></i> 测试控制台</h2>
+        <div class="test-controls">
+          <div class="test-buttons">
+            <button id="test-btn-1" class="btn test">
+              <i class="fas fa-play"></i> 测试1: 启动3秒倒计时
+            </button>
+            <button id="test-btn-2" class="btn test">
+              <i class="fas fa-play"></i> 测试2: 启动5秒倒计时
+            </button>
+            <button id="test-btn-3" class="btn test">
+              <i class="fas fa-sync"></i> 测试3: 获取启动总次数
+            </button>
+            <button id="test-btn-4" class="btn test">
+              <i class="fas fa-plus"></i> 测试4: 创建新计时器实例
+            </button>
+          </div>
+
+          <div class="console-output">
+            <h3><i class="fas fa-terminal"></i> 控制台输出</h3>
+            <div class="console-content" id="console-output">
+              <div class="console-line">> 测试控制台就绪。点击按钮执行测试。</div>
+              <div class="console-line">> 测试用例：创建计时器实例 const myTimer = createTimer();</div>
+              <div class="console-line">> 1. 启动3秒倒计时，结束时输出"时间到！"</div>
+              <div class="console-line">> 2. 再次启动5秒倒计时</div>
+              <div class="console-line">> 3. 获取倒计时启动总次数（应为2）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>递归与闭包任务计时器 | 递归函数、闭包、回调函数、setTimeout、私有变量</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

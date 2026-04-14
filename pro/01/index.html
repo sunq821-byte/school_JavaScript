@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学生成绩分析工具</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-chart-line"></i> 学生成绩分析工具</h1>
+    </header>
+
+    <main>
+      <div class="row">
+        <div class="input-section">
+          <h2><i class="fas fa-edit"></i> 输入学生成绩</h2>
+          <div class="input-area">
+            <div class="input-group">
+              <label for="scores-input">输入成绩（用逗号分隔）：</label>
+              <input type="text" id="scores-input" placeholder="例如：85, 92, 58, 77, 63, 41, 88">
+              <div class="input-hint">支持任意数量的成绩，输入数字并用逗号分隔</div>
+            </div>
+
+            <div class="input-group">
+              <label for="threshold-input">及格分数线：</label>
+              <input type="number" id="threshold-input" min="0" max="100" value="60">
+            </div>
+
+            <div class="button-group">
+              <button id="analyze-btn" class="btn primary">
+                <i class="fas fa-calculator"></i> 分析成绩
+              </button>
+              <button id="clear-btn" class="btn secondary">
+                <i class="fas fa-redo"></i> 清空
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="results-section">
+          <h2><i class="fas fa-chart-bar"></i> 分析结果</h2>
+
+          <div class="results-cards">
+            <div class="card total-card">
+              <div class="card-icon">
+                <i class="fas fa-calculator"></i>
+              </div>
+              <div class="card-content">
+                <h3>总分</h3>
+                <div class="card-value" id="total-value">-</div>
+              </div>
+            </div>
+
+            <div class="card average-card">
+              <div class="card-icon">
+                <i class="fas fa-divide"></i>
+              </div>
+              <div class="card-content">
+                <h3>平均分</h3>
+                <div class="card-value" id="average-value">-</div>
+              </div>
+            </div>
+
+            <div class="card max-card">
+              <div class="card-icon">
+                <i class="fas fa-arrow-up"></i>
+              </div>
+              <div class="card-content">
+                <h3>最高分</h3>
+                <div class="card-value" id="max-value">-</div>
+              </div>
+            </div>
+
+            <div class="card min-card">
+              <div class="card-icon">
+                <i class="fas fa-arrow-down"></i>
+              </div>
+              <div class="card-content">
+                <h3>最低分</h3>
+                <div class="card-value" id="min-value">-</div>
+              </div>
+            </div>
+
+            <div class="card pass-card">
+              <div class="card-icon">
+                <i class="fas fa-user-graduate"></i>
+              </div>
+              <div class="card-content">
+                <h3>及格人数</h3>
+                <div class="card-value" id="pass-value">-</div>
+              </div>
+            </div>
+
+            <div class="card count-card">
+              <div class="card-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="card-content">
+                <h3>总人数</h3>
+                <div class="card-value" id="count-value">-</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grades-section">
+            <h3><i class="fas fa-list-ol"></i> 学生成绩详情</h3>
+            <div class="grades-table-container">
+              <table class="grades-table">
+                <thead>
+                  <tr>
+                    <th>序号</th>
+                    <th>分数</th>
+                    <th>等级</th>
+                    <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody id="grades-table-body">
+                  <tr>
+                    <td colspan="4" class="no-data">请输入成绩并点击"分析"按钮</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

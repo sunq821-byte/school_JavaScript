@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> 生成指定行列的星星图案</title>
+</head>
+<body>
+  <script>
+    var rows = prompt('请输入行数：');
+    var cols = prompt('请输入列数：');
+    var str = '';
+    for (var i = 1; i <= rows; i++) {
+      for (var j = 1; j <= cols; j++) {
+        str += '☆';
+      }
+      str += '\n';	// 换到下一行
+    }
+    console.log(str);
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function arrMax(arr) {
+      let max = arr[0]
+      for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+          max = arr[i]
+        }
+      }
+      return console.log('数组最大值:', max)
+    }
+    arrMax([100, 93, 96, 42, 57])
+  </script>
+</body>
+
+</html>

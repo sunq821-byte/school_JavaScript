@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 对象的创建
+    let obj = {};
+    obj.name = '潘子'
+    obj['sex'] = '男'
+    obj.age = 18
+    obj.hobby = '麻包谷'
+    obj.sayHello = function () {
+      console.log('你好，我是' + this.name + '我正在' + this.hobby)
+    }
+    console.log(obj);
+    obj.sayHello()
+    console.log(obj['name']);
+  </script>
+</body>
+
+</html>

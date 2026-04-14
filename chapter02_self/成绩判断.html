@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var num = prompt('请输入成绩：')
+        if (num >= 90 && num <= 100) {
+            document.write('优秀')
+        } else if (num >= 80 && num < 90) {
+            document.write('良好')
+        } else if (num >= 70 && num < 80) {
+            document.write('中等')
+        } else if (num >= 60 && num < 70) {
+            document.write('及格')
+        } else if (num >= 0 && num < 60) {
+            document.write('不及格')
+        }else {
+            document.write('输入错误')
+        }
+    </script>
+</body>
+
+</html>

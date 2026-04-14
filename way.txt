@@ -1,0 +1,265 @@
+很好，这个选择非常正确 👍
+**TodoList（待办事项）= 前端入门最经典项目之一**，而且刚好完美匹配你现在学的内容。
+
+我直接带你做一个：👉 **能运行 + 能展示 + 能写进简历的版本**
+
+---
+
+# 🧠 一、你这个项目会学到什么？
+
+结合你学的内容：
+
+* 变量 ✔
+* 数据类型 ✔
+* 运算符 ✔
+* if判断 ✔
+* DOM操作（重点新知识）🔥
+* 事件（点击、回车）🔥
+
+---
+
+# 🎯 二、最终效果（你要实现的）
+
+功能很简单但很实用：
+
+✅ 输入任务
+✅ 点击“添加”
+✅ 显示在列表
+✅ 点击删除
+✅ 标记完成（划线）
+
+---
+
+# 🏗 三、项目结构
+
+```
+todolist/
+├── index.html
+├── style.css
+└── script.js
+```
+
+---
+
+# 🧩 四、完整代码（可直接运行）
+
+## 1️⃣ index.html
+
+```html
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>TodoList</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>TodoList</h1>
+
+    <input type="text" id="taskInput" placeholder="请输入任务">
+    <button onclick="addTask()">添加</button>
+
+    <ul id="taskList"></ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+---
+
+## 2️⃣ style.css
+
+```css
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+}
+
+.container {
+  width: 300px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+input {
+  width: 70%;
+  padding: 8px;
+}
+
+button {
+  padding: 8px;
+}
+
+li {
+  list-style: none;
+  margin: 10px 0;
+  padding: 8px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+}
+```
+
+---
+
+## 3️⃣ script.js（核心🔥）
+
+```javascript
+function addTask() {
+  let input = document.getElementById("taskInput");
+  let taskText = input.value;
+
+  // 判断输入是否为空
+  if (taskText === "") {
+    alert("请输入任务！");
+    return;
+  }
+
+  // 创建 li
+  let li = document.createElement("li");
+
+  // 创建 span（任务文本）
+  let span = document.createElement("span");
+  span.innerText = taskText;
+
+  // 点击任务 → 标记完成
+  span.onclick = function () {
+    span.classList.toggle("completed");
+  };
+
+  // 创建删除按钮
+  let btn = document.createElement("button");
+  btn.innerText = "删除";
+
+  btn.onclick = function () {
+    li.remove();
+  };
+
+  // 组装
+  li.appendChild(span);
+  li.appendChild(btn);
+
+  // 加入列表
+  document.getElementById("taskList").appendChild(li);
+
+  // 清空输入框
+  input.value = "";
+}
+```
+
+---
+
+# 🧠 五、核心逻辑讲清楚（非常重要）
+
+### ⭐ 1. 获取输入
+
+```js
+let input = document.getElementById("taskInput");
+```
+
+👉 获取输入框
+
+---
+
+### ⭐ 2. 判断（你学过的 if）
+
+```js
+if (taskText === "") {
+  alert("请输入任务！");
+}
+```
+
+---
+
+### ⭐ 3. 创建元素（新知识🔥）
+
+```js
+document.createElement("li")
+```
+
+👉 JS动态创建HTML
+
+---
+
+### ⭐ 4. 事件（点击）
+
+```js
+span.onclick = function () {}
+```
+
+👉 用户操作触发逻辑
+
+---
+
+### ⭐ 5. 删除元素
+
+```js
+li.remove();
+```
+
+---
+
+# 🚀 六、进阶升级（你可以继续做）
+
+如果你想**变成能卖钱/写简历项目**👇
+
+### 🔥 升级1：回车添加
+
+```js
+input.addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    addTask();
+  }
+});
+```
+
+---
+
+### 🔥 升级2：本地存储（重要！）
+
+👉 刷新不丢数据
+
+---
+
+### 🔥 升级3：任务计数
+
+👉 显示“剩余任务数量”
+
+---
+
+### 🔥 升级4：分类（已完成/未完成）
+
+---
+
+# 🎯 七、你下一步该做什么
+
+👉 不要只看，一定要动手：
+
+1. 复制代码跑起来 ✅
+2. 自己敲一遍 ❗
+3. 改样式（颜色/布局）
+4. 做一个升级功能
+
+---
+
+# 💬 如果你想继续进阶
+
+我可以直接带你：
+
+👉 做一个 **“可写进简历的 TodoList（带本地存储 + UI优化）”**
+👉 或者给你 **5天项目打卡计划（像训练营一样）**
+
+你直接说一句：
+
+👉「升级TodoList」 or 「给我进阶版」
+
+我带你从**作业 → 项目 → 能卖钱的作品 🚀**

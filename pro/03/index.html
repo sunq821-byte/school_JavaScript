@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物车价格计算器</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-shopping-cart"></i> 购物车价格计算器</h1>
+      <p class="subtitle">模拟电商网站购物车，实现添加商品、计算总价、应用优惠券、计算最终应付金额</p>
+    </header>
+
+    <main>
+      <div class="row">
+        <div class="input-section">
+          <h2><i class="fas fa-plus-circle"></i> 添加商品</h2>
+
+          <div class="input-area">
+            <div class="input-group">
+              <label for="item-name">商品名称：</label>
+              <input type="text" id="item-name" placeholder="例如：苹果手机">
+            </div>
+
+            <div class="input-row">
+              <div class="input-group half">
+                <label for="item-price">单价（元）：</label>
+                <input type="number" id="item-price" min="0" step="0.01" placeholder="例如：5999.00">
+              </div>
+
+              <div class="input-group half">
+                <label for="item-quantity">数量：</label>
+                <input type="number" id="item-quantity" min="1" value="1">
+              </div>
+            </div>
+
+            <div class="button-group">
+              <button id="add-item-btn" class="btn primary">
+                <i class="fas fa-cart-plus"></i> 添加到购物车
+              </button>
+              <button id="add-sample-btn" class="btn secondary">
+                <i class="fas fa-magic"></i> 添加示例商品
+              </button>
+            </div>
+          </div>
+
+          <div class="discount-section">
+            <h3><i class="fas fa-tags"></i> 优惠策略</h3>
+
+            <div class="discount-options">
+              <div class="discount-option">
+                <input type="radio" id="no-discount" name="discount" value="none" checked>
+                <label for="no-discount">无优惠</label>
+              </div>
+
+              <div class="discount-option">
+                <input type="radio" id="discount-1" name="discount" value="full200Minus30">
+                <label for="discount-1">满200减30</label>
+                <span class="discount-desc">使用匿名函数实现：price => price > 200 ? price - 30 : price</span>
+              </div>
+
+              <div class="discount-option">
+                <input type="radio" id="discount-2" name="discount" value="discount90">
+                <label for="discount-2">打9折</label>
+                <span class="discount-desc">使用匿名函数实现：price => price * 0.9</span>
+              </div>
+
+              <div class="discount-option">
+                <input type="radio" id="discount-3" name="discount" value="full500Minus100">
+                <label for="discount-3">满500减100</label>
+                <span class="discount-desc">使用函数表达式实现</span>
+              </div>
+
+              <div class="discount-option">
+                <input type="radio" id="discount-4" name="discount" value="full1000Discount85">
+                <label for="discount-4">满1000打85折</label>
+                <span class="discount-desc">使用函数表达式实现</span>
+              </div>
+            </div>
+
+            <div class="custom-discount">
+              <h4><i class="fas fa-code"></i> 自定义优惠函数</h4>
+              <textarea id="custom-discount-input"
+                placeholder="输入JavaScript函数表达式，如：price => price > 100 ? price - 20 : price"></textarea>
+              <button id="apply-custom-btn" class="btn secondary small">
+                <i class="fas fa-check"></i> 应用自定义优惠
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-section">
+          <h2><i class="fas fa-shopping-basket"></i> 购物车</h2>
+
+          <div class="cart-info">
+            <div class="cart-stats">
+              <div class="stat-item">
+                <span class="stat-label">商品种类：</span>
+                <span class="stat-value" id="item-types">0</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">商品总数：</span>
+                <span class="stat-value" id="total-items">0</span>
+              </div>
+            </div>
+
+            <div class="cart-actions">
+              <button id="clear-cart-btn" class="btn danger small">
+                <i class="fas fa-trash"></i> 清空购物车
+              </button>
+            </div>
+          </div>
+
+          <div class="cart-table-container">
+            <table class="cart-table">
+              <thead>
+                <tr>
+                  <th>商品名称</th>
+                  <th>单价</th>
+                  <th>数量</th>
+                  <th>小计</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody id="cart-table-body">
+                <tr>
+                  <td colspan="5" class="no-data">购物车为空，请添加商品</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="calculation-section">
+            <h3><i class="fas fa-calculator"></i> 价格计算</h3>
+
+            <div class="calculation-results">
+              <div class="result-row">
+                <span class="result-label">商品原价：</span>
+                <span class="result-value" id="original-price">¥0.00</span>
+              </div>
+
+              <div class="result-row">
+                <span class="result-label">优惠金额：</span>
+                <span class="result-value discount" id="discount-amount">¥0.00</span>
+              </div>
+
+              <div class="result-row total">
+                <span class="result-label">应付金额：</span>
+                <span class="result-value" id="final-price">¥0.00</span>
+              </div>
+            </div>
+
+            <div class="calculation-actions">
+              <button id="calculate-btn" class="btn primary large">
+                <i class="fas fa-calculator"></i> 计算价格
+              </button>
+              <button id="apply-discount-btn" class="btn secondary large">
+                <i class="fas fa-percent"></i> 应用优惠
+              </button>
+            </div>
+
+            <div class="console-section">
+              <h3><i class="fas fa-terminal"></i> 控制台输出</h3>
+              <div class="console-output" id="console-output">
+                <div class="console-line">> 购物车计算器已就绪！</div>
+                <div class="console-line">> 使用reduce方法计算总价：cart.reduce((total, item) => total + item.price *
+                  item.quantity, 0)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-section">
+        <h2><i class="fas fa-vial"></i> 示例测试</h2>
+
+        <div class="example-tests">
+          <div class="example-test">
+            <h3>测试1：满200减30优惠场景</h3>
+            <p>添加商品使总价超过200元，应用满200减30优惠</p>
+            <button class="btn test" id="test-scenario-1">
+              <i class="fas fa-play"></i> 运行测试
+            </button>
+          </div>
+
+          <div class="example-test">
+            <h3>测试2：打9折优惠场景</h3>
+            <p>添加商品，应用打9折优惠</p>
+            <button class="btn test" id="test-scenario-2">
+              <i class="fas fa-play"></i> 运行测试
+            </button>
+          </div>
+
+          <div class="example-test">
+            <h3>测试3：组合优惠场景</h3>
+            <p>先满减再打折（拓展挑战）</p>
+            <button class="btn test" id="test-scenario-3">
+              <i class="fas fa-play"></i> 运行测试
+            </button>
+          </div>
+
+          <div class="example-test">
+            <h3>测试4：自定义优惠函数</h3>
+            <p>使用自定义函数表达式实现优惠</p>
+            <button class="btn test" id="test-scenario-4">
+              <i class="fas fa-play"></i> 运行测试
+            </button>
+          </div>
+        </div>
+
+        <div class="code-example">
+          <h3><i class="fas fa-code"></i> 核心函数实现</h3>
+
+          <div class="code-tabs">
+            <div class="code-tab active" data-target="code-1">购物车数组与添加商品</div>
+            <div class="code-tab" data-target="code-2">计算总价函数</div>
+            <div class="code-tab" data-target="code-3">应用优惠函数</div>
+            <div class="code-tab" data-target="code-4">优惠策略函数</div>
+          </div>
+
+          <div class="code-content">
+            <div class="code-snippet active" id="code-1">
+              <pre><code>// 购物车数组，每个商品为对象
+const cart = [];
+
+// 添加商品函数
+function addItem(name, price, quantity) {
+    cart.push({
+        name: name,
+        price: parseFloat(price),
+        quantity: parseInt(quantity)
+    });
+    console.log(`添加商品: ${name}, 单价: ¥${price}, 数量: ${quantity}`);
+    updateCartDisplay();
+}</code></pre>
+            </div>
+
+            <div class="code-snippet" id="code-2">
+              <pre><code>// 计算总价函数 - 使用reduce方法
+function calcTotal() {
+    // 使用reduce方法计算总价，优雅且函数式
+    const total = cart.reduce((accumulator, item) => {
+        return accumulator + (item.price * item.quantity);
+    }, 0);
+    
+    console.log(`计算总价: ¥${total.toFixed(2)}`);
+    return total;
+}
+
+// 使用forEach的替代实现
+function calcTotalWithForEach() {
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+    });
+    return total;
+}</code></pre>
+            </div>
+
+            <div class="code-snippet" id="code-3">
+              <pre><code>// 应用优惠函数 - 接收回调函数作为参数
+function applyDiscount(callback) {
+    const originalPrice = calcTotal();
+    console.log(`原总价: ¥${originalPrice.toFixed(2)}`);
+    
+    // 回调函数接收原总价，返回折后价
+    const finalPrice = callback(originalPrice);
+    
+    console.log(`应用优惠后: ¥${finalPrice.toFixed(2)}`);
+    return finalPrice;
+}
+
+// 应用多重优惠（拓展挑战）
+function applyMultipleDiscounts(...callbacks) {
+    let price = calcTotal();
+    console.log(`原总价: ¥${price.toFixed(2)}`);
+    
+    callbacks.forEach((callback, index) => {
+        price = callback(price);
+        console.log(`优惠${index + 1}后: ¥${price.toFixed(2)}`);
+    });
+    
+    return price;
+}</code></pre>
+            </div>
+
+            <div class="code-snippet" id="code-4">
+              <pre><code>// 优惠策略1：满200减30（匿名函数）
+const full200Minus30 = function(price) {
+    return price > 200 ? price - 30 : price;
+};
+
+// 优惠策略2：打9折（匿名函数）
+const discount90 = function(price) {
+    return price * 0.9;
+};
+
+// 优惠策略3：满500减100（函数表达式）
+const full500Minus100 = function(price) {
+    if (price >= 500) {
+        return price - 100;
+    }
+    return price;
+};
+
+// 优惠策略4：满1000打85折（函数表达式）
+const full1000Discount85 = function(price) {
+    if (price >= 1000) {
+        return price * 0.85;
+    }
+    return price;
+};</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>购物车价格计算器 | 函数表达式、匿名函数、回调函数、数组方法、作用域</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

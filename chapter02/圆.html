@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let continueQuery = true,c,area;
+         while(continueQuery){
+            let r = prompt("请输入圆的半径：");
+               if(r === null){
+                continueQuery = false;
+                break;
+               }
+               const pai =Math.PI;
+               c = 2 * pai*r;
+               area = pai *r*r;
+               alert("圆的周长："+c.toFixed(2)+"\n"+"圆的面积："+area.toFixed(2));
+               console.log(`圆的半径是${r} 圆的周长是${c.toFixed(2)} 圆的面积是${area.toFixed(2)}`);
+         }
+         console.log("程序结束");
+    </script>
+</body>
+</html>

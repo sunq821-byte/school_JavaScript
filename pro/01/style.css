@@ -1,0 +1,384 @@
+/* 基础样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* 头部样式 */
+header {
+  background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+  color: white;
+  padding: 25px 30px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* 主要内容区域 */
+main {
+  padding: 25px 30px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.input-section,
+.results-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* 输入区域样式 */
+.input-section h2,
+.results-section h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eaeaea;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-area {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 25px;
+  border: 1px solid #eaeaea;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #4b6cb7;
+  outline: none;
+}
+
+.input-hint {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* 按钮样式 */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s;
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn.primary {
+  background-color: #4b6cb7;
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: #3a5699;
+  transform: translateY(-2px);
+}
+
+.btn.secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+.btn.secondary:hover {
+  background-color: #545b62;
+  transform: translateY(-2px);
+}
+
+/* 结果卡片区域 */
+.results-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-top: 4px solid #4b6cb7;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.total-card {
+  border-top-color: #4b6cb7;
+}
+
+.average-card {
+  border-top-color: #20c997;
+}
+
+.max-card {
+  border-top-color: #fd7e14;
+}
+
+.min-card {
+  border-top-color: #6f42c1;
+}
+
+.pass-card {
+  border-top-color: #28a745;
+}
+
+.count-card {
+  border-top-color: #17a2b8;
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #4b6cb7;
+  margin-right: 20px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(75, 108, 183, 0.1);
+  border-radius: 50%;
+}
+
+.total-card .card-icon {
+  color: #4b6cb7;
+  background-color: rgba(75, 108, 183, 0.1);
+}
+
+.average-card .card-icon {
+  color: #20c997;
+  background-color: rgba(32, 201, 151, 0.1);
+}
+
+.max-card .card-icon {
+  color: #fd7e14;
+  background-color: rgba(253, 126, 20, 0.1);
+}
+
+.min-card .card-icon {
+  color: #6f42c1;
+  background-color: rgba(111, 66, 193, 0.1);
+}
+
+.pass-card .card-icon {
+  color: #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+}
+
+.count-card .card-icon {
+  color: #17a2b8;
+  background-color: rgba(23, 162, 184, 0.1);
+}
+
+.card-content h3 {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* 成绩表格区域 */
+.grades-section {
+  margin-bottom: 20px;
+}
+
+.grades-section h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.grades-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #eaeaea;
+}
+
+.grades-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px;
+}
+
+.grades-table thead {
+  background-color: #4b6cb7;
+  color: white;
+}
+
+.grades-table th {
+  padding: 15px;
+  text-align: left;
+  font-weight: 600;
+}
+
+.grades-table tbody tr {
+  border-bottom: 1px solid #eaeaea;
+  transition: background-color 0.2s;
+}
+
+.grades-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.grades-table td {
+  padding: 15px;
+}
+
+.grades-table .no-data {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 30px;
+}
+
+/* 等级样式 */
+.grade-A {
+  color: #28a745;
+  font-weight: 600;
+}
+
+.grade-B {
+  color: #20c997;
+  font-weight: 600;
+}
+
+.grade-C {
+  color: #fd7e14;
+  font-weight: 600;
+}
+
+.grade-D {
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* 状态样式 */
+.status-pass {
+  color: #28a745;
+  font-weight: 600;
+  background-color: rgba(40, 167, 69, 0.1);
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.status-fail {
+  color: #dc3545;
+  font-weight: 600;
+  background-color: rgba(220, 53, 69, 0.1);
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+
+  .results-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .results-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}

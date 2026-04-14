@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let year = prompt('请输入一个年份')
+    year = Number(year)
+    function fn(y) {
+      if (y % 4 == 0 && y % 100 != 0 || y % 400 == 0) {
+        return 29
+      } else {
+        return 28
+      }
+    }
+    let days = fn(year)
+    alert(`${year}年的二月有 ${days} 天`)
+
+
+  </script>
+</body>
+
+</html>

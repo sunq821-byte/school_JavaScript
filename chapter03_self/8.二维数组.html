@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let array = [
+      [85, 92, 78], // 小明的成绩：语文85，数学92，英语78
+      [90, 88, 95]  // 小红的成绩：语文90，数学88，英语95
+    ];
+    let transposedArray = [];
+    for (let i = 0; i < array[0].length; i++) {
+      transposedArray[i] = [];
+      for (let j = 0; j < array.length; j++) {
+        transposedArray[i][j] = array[j][i];
+      }
+    }
+    document.write(array)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Student(name, age) {
+      this.name = name
+      this.age = age
+      this.info = function () {
+        console.log('我是' + this.name + '我今年' + this.age + '岁')
+      }
+    }
+
+    let stu1 = new Student('潘子', 18)
+    stu1.info()
+    let stu2 = new Student('李四', 19)
+    stu2.info()
+
+
+  </script>
+</body>
+
+</html>
