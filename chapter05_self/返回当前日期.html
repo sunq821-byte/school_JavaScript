@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let date = new Date()
+
+        let year = date.getFullYear()
+        let month = date.getMonth()
+        let day = date.getDay()
+
+        let week = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六',]
+        document.write(`${year}年${month}月${day}日` + week[date.getDay()])
+
+    </script>
+</body>
+
+</html>

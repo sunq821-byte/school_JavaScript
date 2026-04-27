@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 方式1 通过日期对象的valueOf()或getTime()方法获取
+        let date1 = new Date()
+        console.log(date1.valueOf())
+        console.log(date1.getTime())
+
+        // 方式2 使用‘+’运算符将日期对象转换为数字
+        let date2 = +new Date()
+        console.log(date2)
+
+        // 方式3 使用HTML5新增的Date.now()方法获取
+        console.log(Date.now())
+
+    </script>
+</body>
+</html>

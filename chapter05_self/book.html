@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let book = {
+      name: '李白',
+      auther: '曹操',
+      price: 100,
+      publisher: 2006,
+      showinfo: function () {
+        for (let a in book) {
+          console.log(a)
+          console.log(book[a])
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

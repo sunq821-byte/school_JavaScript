@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let time1 = +new Date()
+        let sum = 0
+        for(let i = 1; i<=200;i++){
+            sum+=i
+        }
+        let time2 = +new Date()
+        console.log(`1-200和为${sum}代码运行时间为${(time2-time1)}ms`)
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let str = 'shopping'
+        let num = {}
+        for (let i = 0; i < str.length; i++) {
+            let chars = str.charAt(i)
+            if (num[chars]) {
+                num[chars]++
+            } else {
+                num[chars] = 1
+            }
+        }
+        console.log(num)
+        let max = 0
+        let ch = ''
+        for (let k in num) {
+            if (num[k] > max) {
+                max = num[k]
+                ch = k
+            }
+        }
+        console.log(`出现次数最多的字符是 '${ch}'，出现了 ${max} 次`)
+
+        function Cat(name, breed, age, skills) {
+            this.name = name
+            this.breed = breed
+            this.age = age
+            this.skills = skills
+            this.displayInfo = function () {
+                console.log(`名字：${this.name}， 品种：${this.breed}， 年龄：${this.age}岁`)
+                console.log(`技能：${this.skills.join('、')}`)
+            };
+        }
+
+        let myCat = new Cat("花花", "波斯猫", 2, ["喵喵叫", "摇尾巴"])
+        myCat.displayInfo()
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 使用push()方法和unshift()方法添加数组元素
+        let arr = ['星期一', '星期二', '星期三', '星期四', '星期五']
+        console.log(arr.push('星期六'));      // 输出结果为：6
+        console.log(arr.unshift('星期日'));   // 输出结果为：7
+        // 使用pop()方法和shift()方法删除数组元素
+        console.log(arr.pop());   	              // 输出结果为：星期六
+        console.log(arr.shift()); 	              // 输出结果为：星期日
+        // 使用splice()方法在数组的指定索引处添加或删除数组元素
+        var arr1 = ['老虎', '熊猫', '狮子', '大象'];
+
+        // 从索引2开始，删除2个元素
+        arr1.splice(2, 2);
+        console.log(arr1);         // 输出结果为：(2) ['老虎', '熊猫']
+        // 从索引1开始，删除1个元素，再添加狮子元素
+        arr1.splice(1, 1, '狮子');
+        console.log(arr1);         // 输出结果为：(2) ['老虎', '狮子']
+        // 从索引1处添加斑马和狮子元素
+        arr1.splice(1, 0, '斑马', '猴子','潘子');
+        console.log(arr1);         // 输出结果为：(4) ['老虎', '斑马', '猴子', '狮子']
+
+
+    </script>
+</body>
+
+</html>

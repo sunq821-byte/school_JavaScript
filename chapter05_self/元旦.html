@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let time1 = +new Date();
+        let now = new Date();
+        let currentYear = now.getFullYear();
+        let newYear = new Date(currentYear, 0, 1);
+        
+        if (now > newYear) {
+            newYear.setFullYear(currentYear + 1);
+        }
+        let diff = newYear - time1;
+        let day = Math.floor(diff / 1000 / 60 / 60 / 24);
+        let hour = Math.floor(diff / 1000 / 60 / 60 % 24);
+        let minute = Math.floor(diff / 1000 / 60 % 60);
+        let second = Math.floor(diff / 1000 % 60);
+        console.log("距离下一次元旦还有：" + day + "天 " + hour + "时 " + minute + "分 " + second + "秒");
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let date = new Date()
+        // 设置年月日
+        date.setFullYear(2026)
+        date.setMonth(3)
+        date.setDate(21)
+        
+        // 获取年月日
+        let year = date.getFullYear()
+        let month = date.getMonth()+1
+        let day = date.getDate()
+
+        // 通过数组将星期值转换为字符串
+        let week = ['星期日','星期一','星期二','星期三','星期四','星期五','星期六',]
+        document.write(`${year}年${month}月${day}日`+week[date.getDay()])
+
+    </script>
+</body>
+</html>
