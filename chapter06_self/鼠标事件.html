@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            transition: background-color 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">点击</div>
+    <script>
+        var box = document.getElementById("box");
+        
+        // 鼠标移入时改变颜色
+        box.onmouseenter = function() {
+            box.style.backgroundColor = "lightgreen";
+        };
+        
+        // 鼠标移出时恢复颜色
+        box.onmouseleave = function() {
+            box.style.backgroundColor = "lightblue";
+        };
+        
+        // 点击时在控制台输出“已点击”
+        box.onclick = function() {
+            console.log("已点击");
+        };
+    </script>
+</body>
+</html>

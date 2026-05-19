@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>显示/隐藏文本框提示文字</title>
+    <style>
+        input {
+            width: 260px;
+            height: 32px;
+            padding: 0 8px;
+            color: #333;
+        }
+
+        .gray {
+            color: gray;
+        }
+
+        .black {
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<input type="text" id="txt" value="请输入用户名" class="gray">
+
+<script>
+    const txt = document.getElementById('txt');
+    const defaultText = "请输入用户名";
+
+    // 获取焦点
+    txt.onfocus = function () {
+        if (this.value === defaultText) {
+            this.value = "";
+            this.className = "black";
+        }
+    };
+
+    // 失去焦点
+    txt.onblur = function () {
+        if (this.value === "") {
+            this.value = defaultText;
+            this.className = "gray";
+        }
+    };
+</script>
+
+</body>
+</html>

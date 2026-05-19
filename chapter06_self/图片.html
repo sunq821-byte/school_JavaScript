@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="veg">蔬菜</button>
+    <button id="fru">水果</button>
+    <p>
+    <img src="images/fruit.png" alt="" title="水果">
+
+    <script>
+        var veg = document.getElementById("veg")
+        var fru = document.getElementById("fru")
+
+        var img = document.querySelector('img')
+
+        veg.onclick=function(){
+            img.src = 'images/vegetable.png'
+            img.title = '蔬菜'
+        }
+
+        fru.onclick=function(){
+            img.src = 'images/fruit.png'
+            img.title = '水果'
+        }
+
+    </script>
+</body>
+</html>

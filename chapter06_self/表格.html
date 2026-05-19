@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table border align="center" cellspacing="0">
+        <caption>商品信息详情</caption>
+        <tr>
+            <th>商品种类</th>
+            <td>过季旧款</td>
+            <td>当前热销</td>
+            <td>春季新品</td>
+        </tr>
+        <tr>
+            <th>商品状态</th>
+            <td id="down">已下架</td>
+            <td class="up">热卖中</td>
+            <td class="up" id="wait">已上架</td>
+        </tr>
+    </table>
+    
+    <script>
+        var downGoods = document.getElementById("down")
+        console.log(downGoods.innerHTML)
+        downGoods.innerHTML='已上架'
+
+        var upGoodsFirst = document.getElementsByClassName('up')
+        console.log(upGoodsFirst[0].innerText)
+
+        var upGoodsSecond = document.getElementById('wait')
+        console.log(upGoodsSecond.textContent)
+    </script>
+</body>
+</html>

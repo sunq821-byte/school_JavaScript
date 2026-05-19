@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>密码显示/隐藏</title>
+    <style>
+        .pwd-box {
+            position: relative;
+            width: 260px;
+        }
+
+        .pwd-box input {
+            width: 100%;
+            padding: 8px 40px 8px 10px;
+            box-sizing: border-box;
+        }
+
+        .eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="pwd-box">
+    <input type="password" id="pwd" placeholder="请输入密码">
+    <img src="images/close.png" class="eye" id="eye">
+</div>
+
+<script>
+    const pwd = document.getElementById('pwd');
+    const eye = document.getElementById('eye');
+
+    eye.onclick = function () {
+        if (pwd.type === 'password') {
+            pwd.type = 'text';
+            eye.src = 'images/open.png';
+        } else {
+            pwd.type = 'password';
+            eye.src = 'images/close.png';
+        }
+    };
+</script>
+
+</body>
+</html>

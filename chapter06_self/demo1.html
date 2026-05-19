@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>苹果</li>
+        <li id="special">香蕉</li>
+        <li>橙子</li>
+        <li>葡萄</li>
+    </ul>
+
+    <script>
+        var Obox = document.getElementById("special")
+        console.log(Obox)
+
+        var list = document.getElementsByTagName("li")
+        console.log(list)
+        console.log(Array.isArray(list))
+    </script>
+</body>
+</html>

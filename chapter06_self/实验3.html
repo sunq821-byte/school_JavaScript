@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>高亮显示被单击的按钮</title>
+    <style>
+        button {
+            width: 80px;
+            height: 36px;
+            margin-right: 10px;
+            border: none;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+
+        /* 高亮样式 */
+        .active {
+            background-color: #ff6700;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+<script>
+    const buttons = document.querySelectorAll('button');
+
+    buttons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            // 1. 移除所有按钮的高亮
+            buttons.forEach(item => item.classList.remove('active'));
+
+            // 2. 给当前点击的按钮添加高亮
+            this.classList.add('active');
+        });
+    });
+</script>
+
+</body>
+</html>

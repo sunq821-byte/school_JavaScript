@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标指针经过时背景变色</title>
+    <style>
+        table {
+            width: 400px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            height: 36px;
+        }
+
+        tr.even {
+            background-color: #f9f9f9;
+        }
+
+        tr.odd {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>城市</th>
+    </tr>
+    <tr class="odd">
+        <td>张三</td>
+        <td>20</td>
+        <td>北京</td>
+    </tr>
+    <tr class="even">
+        <td>李四</td>
+        <td>22</td>
+        <td>上海</td>
+    </tr>
+    <tr class="odd">
+        <td>王五</td>
+        <td>21</td>
+        <td>广州</td>
+    </tr>
+</table>
+
+<script>
+    const rows = document.querySelectorAll('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+        rows[i].onmouseover = function () {
+            this.style.backgroundColor = '#ffe58f';
+        };
+
+        rows[i].onmouseout = function () {
+            if (i % 2 === 0) {
+                this.style.backgroundColor = '#f9f9f9';
+            } else {
+                this.style.backgroundColor = '#fff';
+            }
+        };
+    }
+</script>
+
+</body>
+</html>
